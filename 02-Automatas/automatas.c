@@ -31,7 +31,7 @@ void realizarChequeoCadena(){
 
 	while (grupoPalabra!=NULL)
 	{
-
+			printf("La primera cadena a chquear es :%s \n" ,grupoPalabra );
 		 if(distinguirConstante(grupoPalabra)==AUTOMATA_OCTAL)
 		 {
 			revisarOctal(grupoPalabra) ;
@@ -333,54 +333,54 @@ int valorNumerico(char caracter)
 
 //PUNTO 3
 struct PilaNumerica {
-    int top;
+    int ultPos;
     float items[100];
 };
 
 struct PilaCaracter
 {
-  int top;
+  int ultPos;
     char items[100];
 };
 
 
 void inicializarPila(struct PilaNumerica* pila) {
-    pila->top = -1;
+    pila->ultPos = -1;
 }
 void inicializarPilaCaracteres(struct PilaCaracter* pila) {
-    pila->top = -1;
+    pila->ultPos = -1;
 }
 
 int isEmpty(struct PilaNumerica* pila) {
-    return pila->top == -1;
+    return pila->ultPos == -1;
 }
 int isEmptyCaracteres(struct PilaCaracter* pila) {
-    return pila->top == -1;
+    return pila->ultPos == -1;
 }
 
 void push(struct PilaNumerica* pila, float item) {
     
-   pila->top=pila->top+1 ;
-    pila->items[pila->top] = item;
+   pila->ultPos=pila->ultPos+1 ;
+    pila->items[pila->ultPos] = item;
 }
 void pushCaracteres(struct PilaCaracter* pila, float item) {
-    pila->top=pila->top+1 ;
-    pila->items[pila->top] = item;
+    pila->ultPos=pila->ultPos+1 ;
+    pila->items[pila->ultPos] = item;
 }
 
 
 float pop(struct PilaNumerica* pila) {
     if (!isEmpty(pila)) {
-         float num = pila->items[pila->top] ;
-        pila->top = pila->top-1 ;
+         float num = pila->items[pila->ultPos] ;
+        pila->ultPos = pila->ultPos-1 ;
         return num;
     }
     return -1;
 }
 char popCaracteres(struct PilaCaracter* pila) {
     if (!isEmptyCaracteres(pila)) {
-        char car = pila->items[pila->top] ;
-        pila->top = pila->top-1 ;
+        char car = pila->items[pila->ultPos] ;
+        pila->ultPos = pila->ultPos-1 ;
         return car;
     }
     return -1;
@@ -421,8 +421,8 @@ float evaluarExpresion(char* expresion) {
             push(&pilaNum, numero);
         } else if (expresion[i] == '+' || expresion[i] == '-') {
             if(!isEmptyCaracteres(&pilaOp) &&
-                   (pilaOp.items[pilaOp.top] == '+' || pilaOp.items[pilaOp.top] == '-' ||
-                    pilaOp.items[pilaOp.top] == '*' || pilaOp.items[pilaOp.top] == '/'))
+                   (pilaOp.items[pilaOp.ultPos] == '+' || pilaOp.items[pilaOp.ultPos] == '-' ||
+                    pilaOp.items[pilaOp.ultPos] == '*' || pilaOp.items[pilaOp.ultPos] == '/'))
             {
                 float num2 = pop(&pilaNum);
                 float num1 = pop(&pilaNum);
@@ -433,7 +433,7 @@ float evaluarExpresion(char* expresion) {
             pushCaracteres(&pilaOp, expresion[i]);
         } else if (expresion[i] == '*' || expresion[i] == '/') {
            if(!isEmptyCaracteres(&pilaOp) &&
-                   (pilaOp.items[pilaOp.top] == '*' || pilaOp.items[pilaOp.top] == '/')) {
+                   (pilaOp.items[pilaOp.ultPos] == '*' || pilaOp.items[pilaOp.ultPos] == '/')) {
                 float num2 = pop(&pilaNum);
                 float num1 = pop(&pilaNum);
                 char operador = popCaracteres(&pilaOp);
@@ -454,7 +454,7 @@ float evaluarExpresion(char* expresion) {
         push(&pilaNum, resultado);
     }
 
-    return pilaNum.items[pilaNum.top];
+    return pilaNum.items[pilaNum.ultPos];
 }
 
 void calcularExpresionMatematica(){
