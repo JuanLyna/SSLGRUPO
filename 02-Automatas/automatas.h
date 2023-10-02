@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <string.h> // https://www.uco.es/grupos/eatco/informatica/metodologia/cadenasyarrays.pdf de aquí voy a sacar la funcion  strcat q me concatena dos cadenas
-#include <ctype.h> // de acá salimos el isdigit
+#include <string.h> // de acá sacamos la función strtok
+#include <ctype.h> // de acá sacamos la función isdigit
 
 
 #define AUTOMATA_OCTAL 1
