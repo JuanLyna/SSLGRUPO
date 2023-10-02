@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <string.h> // de acá sacamos la función strtok
+#include <string.h> // de acá sacamos las funciones strtok y strlen
 #include <ctype.h> // de acá sacamos la función isdigit
 
 
