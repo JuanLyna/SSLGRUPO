@@ -1,0 +1,5 @@
+clear
+flex prueba.l
+bison -yd prueba.y
+gcc -o prueba lex.yy.c y.tab.c
+./prueba

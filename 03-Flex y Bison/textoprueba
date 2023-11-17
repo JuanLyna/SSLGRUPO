@@ -1,0 +1,6 @@
+inicio
+leer(primervar,segundavar);
+escribir(inicio);
+escribir(1+2);
+primeravar:=90+1;
+fin
