@@ -1,0 +1,3 @@
+inicio
+   variable:= ?  ; 
+fin
